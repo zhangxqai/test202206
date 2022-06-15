@@ -1,4 +1,4 @@
-package com.bjpowernode.mybatis.test;
+﻿package com.bjpowernode.mybatis.test;
 
 import com.bjpowernode.mybatis.dao.StudentDao;
 import com.bjpowernode.mybatis.domain.Student;
@@ -22,6 +22,9 @@ public class Test1 {
     public static void main(String[] args)  {
 
         StudentDao studentDao = SqlSessionUtil.getSession().getMapper(StudentDao.class);
+
+
+        System.out.println("aa");
         //根据id查询
         /*Student s = studentDao.select1("A1");
         System.out.println(s);*/
@@ -67,6 +70,7 @@ public class Test1 {
             String name = (String) map.get("name");
             int a = (int) map.get("age");
             System.out.println("id是：" + i + ", name是：" + name + ", age 是：" + a);
+
         }
     }
 }
