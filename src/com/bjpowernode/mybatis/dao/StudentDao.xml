@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjpowernode.mybatis.dao.StudentDao">
+
+    <select id="getById" parameterType="string" resultType="student">
+        select id,name,age from tbl_student where id = #{id}
+    </select>
+
+    <!--<insert id="insert" parameterType="student" >
+        insert into tbl_student (id,name,age) value ( #{id}, #{name} ,#{age})
+    </insert>-->
+    <insert id="insert" parameterType="student" >
+        insert into tbl_student (id,name,age) values (#{id},#{name},#{age})
+    </insert>
+    
+    <select id="select1" parameterType="string" resultType="student">
+        select id,name,age from tbl_student where id = #{id}
+    </select>
+
+    <!--
+        List<Student> select2(String a2)
+    -->
+    <select id="select2" parameterType="string" resultType="student">
+        select id,name,age from tbl_student where id = #{id}
+    </select>
+
+    <!--
+    根据name进行模糊查询
+        List<Student> a = studentDao.select3("阿");
+        a.forEach(student -> System.out.println(student));
+    -->
+    <select id="select3" parameterType="string" resultType="student">
+        select id,name,age from tbl_student where name like concat('%',#{name},'%')
+    </select>
+
+    <!--
+    List<Map> select4(String being,String eng);
+    -->
+    <select id="select4" resultType="student">
+        select id,name ,age from tbl_student where age between #{being} and #{eng}
+    </select>
+
+    <!--
+    查询总条数
+    int select5();
+    -->
+    <select id="select5" resultType="int">
+        select count(*) from tbl_student
+    </select>
+
+    <select id="select6" parameterType="int" resultType="map">
+        select id,name,age from tbl_student where age =#{age}
+    </select>
+
+    <!--
+    List<Map> select7();
+    -->
+    <select id="select7" resultType="map">
+        select id,name,age from tbl_student
+    </select>
+
+</mapper>
